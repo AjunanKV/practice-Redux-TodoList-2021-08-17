@@ -17,11 +17,10 @@ function TodoItem(props){
     function handleRemove(event){
         dispatch(RemoveTodo(props.id));
     }
-    
     return(
-        <div>
+        <div className ="TodoItemBody">
             <span className = {`TodoItem-todo-${todoStatus}`} onDoubleClick={handleClick}>{todo.text}</span>
-            <button onClick={handleRemove}>X</button>
+            <button className = "RemoveButton" onClick={handleRemove}>X</button>
         </div>
     )
 }

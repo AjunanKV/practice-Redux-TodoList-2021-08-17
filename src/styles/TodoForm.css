@@ -1,4 +1,25 @@
 .body{
 padding: 15px;
 margin: 10px;
+font-family: "Century Gothic";
+color:cyan
+}
+.inputBox{
+    border-color: cyan;
+    margin: 5px;
+    color: cyan;
+    background-color: black;
+    height: 50px;
+    width: 250px;
+    font-size: medium;
+}
+.addButton{
+    height: 50px;
+    width: 50px;
+    border-color: cyan;
+    background-color: black;
+    color: cyan;
+}
+.addButton:hover{
+    background-color: white;
 }

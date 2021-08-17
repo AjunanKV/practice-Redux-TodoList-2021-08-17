@@ -16,9 +16,9 @@ function TodoForm() {
     }
     return (
     <div className = "body">
-        <input type="text" placeholder="Input a new todo item"
+        <input type="text" className="inputBox" placeholder="Input a new todo item"
         value={text} onChange={changeHandler}></input>
-        <button onClick={addHandler}>add</button>
+        <button className = "addButton" onClick={addHandler}>add</button>
         </div>
 )};
 export default TodoForm;

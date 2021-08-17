@@ -1,7 +1,36 @@
 .TodoItem-todo-done{
     font-family: "Century Gothic";
     text-decoration: line-through;
+    text-decoration-color: red;
+    color: cyan;
+    font-size: large;
 }
 .TodoItem-todo-{
     font-family: "Century Gothic";
+    color: cyan;
+    font-size: large;
+}
+.RemoveButton{
+    margin :15px;
+    background-color: grey;
+    border-color: grey;
+}
+.TodoItemBody{
+    margin: auto;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 25px;
+    padding: 20px;
+    width: 450px;
+    height: 40px;
+    border-color: cyan;
+    background: black;
+    border: 2px solid cyan;
+    margin-bottom: 8px;
+}
+.RemoveButton:hover{
+    background-color: white;
+}
+body{
+    background-color: black;
 }
