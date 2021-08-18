@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import {AddTodo } from "../common/reducers/todoSlice"
+import {createTodos} from "../api/todosApi";
+import { Button } from 'antd';
 import "../styles/TodoForm.css";
+import { Input } from 'antd';
 function TodoForm() {
 
     const [text, setText] = useState("");
     const dispatch = useDispatch();
+    const { TextArea } = Input;
 
     function changeHandler(event){
         setText(event.target.value);
@@ -16,16 +20,20 @@ function TodoForm() {
             alert("Please input something in the Textfield first before adding");
         }
         else{
-            dispatch(AddTodo(text));
+            createTodos(text).then((response)=>{
+                dispatch(AddTodo(response.data));
+            })
             setText("");
         }
         
     }
     return (
+    <section className = "container">
     <div className = "body">
-        <input type="text" className="inputBox" placeholder="Input a new todo item"
-        value={text} onChange={changeHandler}></input>
-        <button className = "addButton" onClick={addHandler}>add</button>
+        <TextArea showCount maxLength={100} className="inputBox" placeholder="Input a new todo item" value= {text} onChange={changeHandler}/>
+        <Button type="primary" className = "addButton" onClick = {addHandler}>Add Todo</Button>
         </div>
+        </section>
+    
 )};
 export default TodoForm;

@@ -27,6 +27,19 @@
 .App-link {
   color: #61dafb;
 }
+.container{
+  display: table;
+  width: 100%;
+}
+
+.BrowserRoute{
+  position: absolute;
+  right: 0px;
+  width: 50%;
+  margin-top: 300px;
+  left: 1350px;
+}
+
 
 @keyframes App-logo-spin {
   from {

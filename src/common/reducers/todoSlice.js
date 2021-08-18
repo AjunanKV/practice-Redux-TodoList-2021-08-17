@@ -1,25 +1,12 @@
 import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
 import {v4 as uuid} from "uuid";
+import { createSelector } from "reselect";
 
 const todosAdapter = createEntityAdapter();
 const initialState = todosAdapter.getInitialState({
-    ids: [1,2,3],
+    ids: [],
     entities: {
-        1: {
-                id: "1",
-                text: "testing todo1",
-                done: false,
-            },
-        2: {
-            id: "2",
-            text: "testing todo2",
-            done: false,
-            },
-        3: {
-                id: "3",
-                text: "testing todo3",
-                done: false,
-        },
+        
     }
 });
 
@@ -28,21 +15,20 @@ const todoSlice = createSlice({
         initialState: initialState,
         reducers: {
             AddTodo(state,action){
-                todosAdapter.addOne(state,{
-                    id: uuid(),
-                    text: action.payload,
-                    done: false,
-                });
+                todosAdapter.addOne(state,action.payload);
                 return state;
             },
             ToogleTodo(state,action){
-              const todo = state.entities[action.payload]
-              todo.done = !todo.done;
-                
+                todosAdapter.updateOne(state, {
+                    id: action.payload.id,
+                    changes: action.payload.updateTodos.updateTodos
+                });
             },
             RemoveTodo(state,action){
-                todosAdapter.removeOne(state,action.payload);
-                  
+                todosAdapter.removeOne(state,action.payload.id);
+              },    
+              addResponse(state,action){
+                todosAdapter.addMany(state,action.payload);
               },
         },
 });
@@ -50,7 +36,13 @@ const todoSlice = createSlice({
 export const {AddTodo} = todoSlice.actions;
 export const {ToogleTodo} = todoSlice.actions;
 export const {RemoveTodo} = todoSlice.actions;
-export const{selectIds: selectTodoIds, selectById: selectTodoById} =
+export const {addResponse} = todoSlice.actions;
+export const{selectIds: selectTodoIds, selectById: selectTodoById, selectAll: selectTodos} =
 todosAdapter.getSelectors((state) => state.todoList);
+
+
+export const selectDoneList = createSelector( [selectTodos], todos =>
+    todos.filter((todo) => todo.done));
+
 
 export default todoSlice.reducer;
