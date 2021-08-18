@@ -11,8 +11,15 @@ function TodoForm() {
         setText(event.target.value);
     }
     function addHandler(event){
-        dispatch(AddTodo(text));
-        setText("");
+        if(text==="")
+        {
+            alert("Please input something in the Textfield first before adding");
+        }
+        else{
+            dispatch(AddTodo(text));
+            setText("");
+        }
+        
     }
     return (
     <div className = "body">

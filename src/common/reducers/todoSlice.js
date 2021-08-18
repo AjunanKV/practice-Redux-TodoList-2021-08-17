@@ -3,7 +3,7 @@ import {v4 as uuid} from "uuid";
 
 const todosAdapter = createEntityAdapter();
 const initialState = todosAdapter.getInitialState({
-    ids: [1],
+    ids: [1,2,3],
     entities: {
         1: {
                 id: "1",
@@ -17,7 +17,7 @@ const initialState = todosAdapter.getInitialState({
             },
         3: {
                 id: "3",
-                text: "testing todo2",
+                text: "testing todo3",
                 done: false,
         },
     }
