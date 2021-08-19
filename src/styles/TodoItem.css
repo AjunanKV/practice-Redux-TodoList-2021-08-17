@@ -37,3 +37,6 @@
     margin-top: 20px;
     margin-left: 720px;
 }
+.modal{
+    display: inline-block;
+}
