@@ -2,7 +2,6 @@
     margin-left: 900px;
     font-family: "Century Gothic";
     color: black;
-    margin-left: 440px;
     font-size: x-large;
 
 }
@@ -15,8 +14,4 @@
     left: 0px;
     width: 50%;
   }
-  .Reminder{
-    color: red;
-    margin-bottom: 150px;
-    margin-left: 380px;
-  }
+

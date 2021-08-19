@@ -13,7 +13,7 @@ export const updateTodos = (id, updateTodos) => {
 }
 
 export const removeTodos = (id) => {
-    return api.put(`/todos/${id}`);
+    return api.delete(`/todos/${id}`);
 }
 
 

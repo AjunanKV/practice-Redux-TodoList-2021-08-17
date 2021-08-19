@@ -11,7 +11,7 @@ function DoneList(){
         <div>
             <h1 className = "title">Done List</h1>
             { todo.map((doneItem) =>(
-                    <TodoItem key ={doneItem.id} id={doneItem.id}></TodoItem>
+                    <TodoItem className ="table" key ={doneItem.id} id={doneItem.id}></TodoItem>
                 ))}
         </div>)
 }

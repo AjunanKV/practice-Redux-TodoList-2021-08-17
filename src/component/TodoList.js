@@ -12,7 +12,6 @@ function TodoList(){
     const dispatch = useDispatch();
     useEffect(() => {
         getTodos().then((response) => {
-            console.log("response" , response.data)
             dispatch(addResponse(response.data));
         })
     })
@@ -20,7 +19,6 @@ function TodoList(){
         <section className = "container">
         <div className = "left-half">
             <h1 className = "TodoList">TodoList</h1>
-            <p1 className ="Reminder">**Please double click to toogle</p1>
             <TodoForm></TodoForm>
             <TodoGroup></TodoGroup>
           

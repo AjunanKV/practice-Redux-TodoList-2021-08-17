@@ -41,7 +41,6 @@ export const {addResponse} = todoSlice.actions;
 export const{selectIds: selectTodoIds, selectById: selectTodoById, selectAll: selectTodos} =
 todosAdapter.getSelectors((state) => state.todoList);
 
-
 export const selectDoneList = createSelector( [selectTodos], todos =>
     todos.filter((todo) => todo.done));
 

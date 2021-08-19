@@ -5,6 +5,7 @@ import {createTodos} from "../api/todosApi";
 import { Button } from 'antd';
 import "../styles/TodoForm.css";
 import { Input } from 'antd';
+import { message } from 'antd';
 function TodoForm() {
 
     const [text, setText] = useState("");
@@ -17,20 +18,21 @@ function TodoForm() {
     function addHandler(event){
         if(text==="")
         {
-            alert("Please input something in the Textfield first before adding");
+            message.error('Please input something in the Textfield first before adding');
         }
         else{
             createTodos(text).then((response)=>{
                 dispatch(AddTodo(response.data));
             })
             setText("");
+            message.success('Todo List is updated');
         }
     }
     return (
     <section className = "container">
     <div className = "body">
         <TextArea showCount maxLength={100} className="inputBox" placeholder="Input a new todo item" value= {text} onChange={changeHandler}/>
-        <Button type="primary" className = "addButton" onClick = {addHandler}>Add Todo</Button>
+        <Button type="default" className = "addButton" onClick = {addHandler}>Add Todo</Button>
         </div>
         </section>
     
