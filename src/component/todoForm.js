@@ -25,7 +25,6 @@ function TodoForm() {
             })
             setText("");
         }
-        
     }
     return (
     <section className = "container">

@@ -9,7 +9,7 @@ export const createTodos = (text) => {
 }
 
 export const updateTodos = (id, updateTodos) => {
-    return api.put(`/todos/${id}`,{updateTodos});
+    return api.put(`/todos/${id}`,updateTodos);
 }
 
 export const removeTodos = (id) => {

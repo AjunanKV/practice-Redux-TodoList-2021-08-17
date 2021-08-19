@@ -19,7 +19,8 @@ function TodoList(){
     return(
         <section className = "container">
         <div className = "left-half">
-            <h1>TodoList</h1>
+            <h1 className = "TodoList">TodoList</h1>
+            <p1 className ="Reminder">**Please double click to toogle</p1>
             <TodoForm></TodoForm>
             <TodoGroup></TodoGroup>
           

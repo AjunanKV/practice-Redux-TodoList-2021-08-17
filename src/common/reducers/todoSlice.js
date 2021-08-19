@@ -1,6 +1,7 @@
 import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
 import {v4 as uuid} from "uuid";
 import { createSelector } from "reselect";
+import { updateTodos } from "../../api/todosApi";
 
 const todosAdapter = createEntityAdapter();
 const initialState = todosAdapter.getInitialState({
@@ -21,12 +22,12 @@ const todoSlice = createSlice({
             ToogleTodo(state,action){
                 todosAdapter.updateOne(state, {
                     id: action.payload.id,
-                    changes: action.payload.updateTodos.updateTodos
+                    changes: action.payload.updateTodos
                 });
             },
             RemoveTodo(state,action){
                 todosAdapter.removeOne(state,action.payload.id);
-              },    
+              },
               addResponse(state,action){
                 todosAdapter.addMany(state,action.payload);
               },

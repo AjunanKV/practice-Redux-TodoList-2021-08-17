@@ -21,10 +21,10 @@ width: 50%;
     margin-left: 750px;
 }
 .addButton{
-    border-color: cyan;
     color: burlywood;
     margin-top: 20px;
     margin-left: 900px;
+    
     
 }
 .addButton:hover{
