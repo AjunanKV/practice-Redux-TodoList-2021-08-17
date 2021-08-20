@@ -14,10 +14,11 @@ import { useState } from 'react';
 function TodoItem(props){
     const todo  = useSelector(state => selectTodoById(state,props.id));
     const dispatch = useDispatch();
-    const todoStatus = todo.done? "done":" ";
+    const todoStatus = todo.done? "done":"Undone";
     const [visible, setVisible] = React.useState(false);
     const [confirmLoading] = React.useState(false);
     const propmptText = <span>Please double click to toogle</span>;
+    const disableText = <span>This button is disabled(cannot edit finished items)</span>
     const [modalText, setModalText] = useState(todo.text)
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -32,7 +33,7 @@ function TodoItem(props){
          };
 
       function ModifyToDo() {
-        if (modalText !== '') {
+        if (modalText !=='') {
             updateTodos(todo.id, {text: modalText})
             .then((response) => {
                 dispatch(ToogleTodo(response.data))
@@ -40,11 +41,7 @@ function TodoItem(props){
             setIsModalVisible(false);
         } else {
             handleModalCancel()
-        }
-      
-        
-     
-
+        }  
     }
 
     const showPopconfirm = () => {
@@ -59,8 +56,8 @@ function TodoItem(props){
         });
         
     };
-    function HandleModify(e) {
-        setModalText(e.target.value)
+    function HandleModify(event) {
+        setModalText(event.target.value)
     } 
 
     function handleRemove(event){
@@ -72,8 +69,7 @@ function TodoItem(props){
         <div className= "TodoItem">
         <div className ="TodoItemBody">
              <Tooltip placement="leftTop" title={propmptText}>
-            <span className = {`TodoItem-todo-${todoStatus}`} onDoubleClick={handleClick}>{todo.text}</span></Tooltip>
-            
+            <span className = {`TodoItem-todo-${todoStatus}`} onDoubleClick={handleClick}>{todo.text}</span></Tooltip>  
             <Popconfirm
         title="Do you want to confirm removal of this Todo?"
         visible={visible}
@@ -82,10 +78,12 @@ function TodoItem(props){
         onCancel={handleCancel}>
             <CloseCircleFilled className = "RemoveButton" onClick={showPopconfirm}></CloseCircleFilled>
             </Popconfirm>
-
-            <FormOutlined className = "RemoveButton" onClick={showModal}/>
-
-            <Modal title="Edit to-do" visible={isModalVisible} onOk={ModifyToDo} onCancel={handleModalCancel}>
+            {todoStatus === 'Undone'?
+            <FormOutlined className = "RemoveButton" onClick={showModal}/>:
+            <Tooltip placement="leftTop" title={disableText}>
+            <FormOutlined className = "RemoveButton" disabled/></Tooltip>
+            }
+            <Modal title="Edit to-do" visible={isModalVisible} onOk={ModifyToDo} onCancel={handleModalCancel} destroyOnClose={true}>
             <Input value={modalText} onChange={HandleModify}></Input>
             </Modal>
 
