@@ -17,7 +17,7 @@ const todoSlice = createSlice({
                 todosAdapter.addOne(state,action.payload);
                 return state;
             },
-            ToogleTodo(state,action){
+            updateTodo(state,action){
                 todosAdapter.updateOne(state, {
                     id: action.payload.id,
                     changes: action.payload.updateTodos
@@ -33,7 +33,7 @@ const todoSlice = createSlice({
 });
 
 export const {AddTodo} = todoSlice.actions;
-export const {ToogleTodo} = todoSlice.actions;
+export const {updateTodo} = todoSlice.actions;
 export const {RemoveTodo} = todoSlice.actions;
 export const {addResponse} = todoSlice.actions;
 export const{selectIds: selectTodoIds, selectById: selectTodoById, selectAll: selectTodos} =

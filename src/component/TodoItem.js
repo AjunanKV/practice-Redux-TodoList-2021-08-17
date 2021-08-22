@@ -1,5 +1,5 @@
 import { useSelector,useDispatch} from "react-redux";
-import {ToogleTodo,RemoveTodo,selectTodoById } from "../common/reducers/todoSlice";
+import {updateTodo,RemoveTodo,selectTodoById } from "../common/reducers/todoSlice";
 import "../styles/TodoItem.css";
 import {removeTodos,updateTodos} from "../api/todosApi";
 import { CloseCircleFilled,FormOutlined } from '@ant-design/icons';
@@ -31,7 +31,7 @@ function TodoItem(props){
         if (modalText !=='') {
             updateTodos(todo.id, {text: modalText})
             .then((response) => {
-                dispatch(ToogleTodo(response.data))
+                dispatch(updateTodo(response.data))
             })
             setIsModalVisible(false);
         } else {
@@ -47,7 +47,7 @@ function TodoItem(props){
       };
     function handleClick(){
         updateTodos(props.id, {done: !todo.done}).then((response) =>{
-            dispatch(ToogleTodo({id: props.id, updateTodos: response.data}));
+            dispatch(updateTodo({id: props.id, updateTodos: response.data}));
         });
         
     };
