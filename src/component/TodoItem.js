@@ -1,15 +1,10 @@
-import React from "react"
-import { useSelector} from "react-redux";
-import { useDispatch } from "react-redux";
-import { selectTodoById } from "../common/reducers/todoSlice";
-import {ToogleTodo } from "../common/reducers/todoSlice";
-import {RemoveTodo} from "../common/reducers/todoSlice";
+import { useSelector,useDispatch} from "react-redux";
+import {ToogleTodo,RemoveTodo,selectTodoById } from "../common/reducers/todoSlice";
 import "../styles/TodoItem.css";
-import {removeTodos} from "../api/todosApi";
-import {updateTodos} from "../api/todosApi";
+import {removeTodos,updateTodos} from "../api/todosApi";
 import { CloseCircleFilled,FormOutlined } from '@ant-design/icons';
-import { Tooltip, Button,Popconfirm,Modal,Input } from 'antd';
-import { useState } from 'react';
+import { Tooltip,Popconfirm,Modal,Input } from 'antd';
+import React,{ useState } from 'react';
 
 function TodoItem(props){
     const todo  = useSelector(state => selectTodoById(state,props.id));
@@ -71,20 +66,20 @@ function TodoItem(props){
              <Tooltip placement="leftTop" title={propmptText}>
             <span className = {`TodoItem-todo-${todoStatus}`} onDoubleClick={handleClick}>{todo.text}</span></Tooltip>  
             <Popconfirm
-        title="Do you want to confirm removal of this Todo?"
-        visible={visible}
-        onConfirm={handleRemove}
-        okButtonProps={{ loading: confirmLoading }}
-        onCancel={handleCancel}>
-            <CloseCircleFilled className = "RemoveButton" onClick={showPopconfirm}></CloseCircleFilled>
+              title="Do you want to confirm removal of this Todo?"
+              visible={visible}
+              onConfirm={handleRemove}
+              okButtonProps={{ loading: confirmLoading }}
+              onCancel={handleCancel}>
+             <CloseCircleFilled className = "RemoveButton" onClick={showPopconfirm}></CloseCircleFilled>
             </Popconfirm>
             {todoStatus === 'Undone'?
-            <FormOutlined className = "RemoveButton" onClick={showModal}/>:
-            <Tooltip placement="leftTop" title={disableText}>
-            <FormOutlined className = "RemoveButton" disabled/></Tooltip>
+               <FormOutlined className = "RemoveButton" onClick={showModal}/>:
+              <Tooltip placement="leftTop" title={disableText}>
+              <FormOutlined className = "RemoveButton" disabled/></Tooltip>
             }
             <Modal title="Edit to-do" visible={isModalVisible} onOk={ModifyToDo} onCancel={handleModalCancel} destroyOnClose={true}>
-            <Input value={modalText} onChange={HandleModify}></Input>
+               <Input value={modalText} onChange={HandleModify}></Input>
             </Modal>
 
         </div>

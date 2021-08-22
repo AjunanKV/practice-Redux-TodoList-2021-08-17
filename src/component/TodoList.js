@@ -1,9 +1,8 @@
-import React from "react";
 import TodoForm from "./todoForm";
 import TodoGroup from "./TodoGroup";
 import "../styles/TodoList.css";
 import {getTodos} from "../api/todosApi";
-import { useEffect } from "react";
+import React,{ useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {addResponse} from "../common/reducers/todoSlice";
 

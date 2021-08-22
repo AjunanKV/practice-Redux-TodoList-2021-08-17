@@ -1,7 +1,5 @@
 import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
-import {v4 as uuid} from "uuid";
 import { createSelector } from "reselect";
-import { updateTodos } from "../../api/todosApi";
 
 const todosAdapter = createEntityAdapter();
 const initialState = todosAdapter.getInitialState({
